@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+body{
+  overflow-x: hidden !important;
+}
+body::-webkit-scrollbar{
+  width: 5px;
+}
+body::-webkit-scrollbar-track{
+  background: #f1f1f1; 
+  border-radius: 10px;
+}
+body::-webkit-scrollbar-thumb{
+  background: #888; 
+  border-radius: 10px;
+}
+.mouse{
+  background-color: #3b82f6;
+}
+* {
+margin: 0px;
+padding: 0px;
+box-sizing: border-box;  
+}
+header,.first,.second,.third{
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+header{
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+}
+.loginRegistre{
+  width: 50%;
+  top: 0px;
+  transition: 0.5s;
+}
+.login .seconde .glass{
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  position: absolute;
+  transform: translate(-50%,-50%);
+}
+
+@media screen and (max-width:768px) {
+  header{
+      padding-left: 1rem;
+      padding-right: 1rem;
+  }
+
+}
+@media screen and (max-width : 640px) {
+  header{
+      padding-left: .5rem;
+      padding-right: .5rem;
+  }
+}
