@@ -61,7 +61,7 @@ export default function Nav() {
      }
   }
   return (
-    <header className="flex items-center justify-between w-full py-2 z-10 border ">
+    <header className="flex items-center justify-between w-full py-2 z-50 border ">
         <h4 onClick={()=>router.push('/')} className="mb-0 flex items-center font-semibold text-base md:text-lg hover:cursor-pointer"><Image src="/photo/logo.jpg" alt="logo" width={50} height={50}/> Apptechfos</h4>
         <nav className="md:block hidden">
             
@@ -87,14 +87,13 @@ export default function Nav() {
         <Drawer PaperProps={{style : {width : '70%'}}} open = {state.open} onClose={()=>dispatch({type : 'close_drawer'})}>
            <div className = 'w-full px-4'>
               <div className="flex items-center justify-between py-3 border-bottom">
-                <h4 onClick={()=>router.push('/')} className="mb-0 flex items-center font-semibold text-base md:text-lg hover:cursor-pointer"><Brain width={50} height={50}/> Cereen</h4>
+                <h4 onClick={()=>router.push('/')} className="mb-0 flex items-center font-semibold text-base md:text-lg hover:cursor-pointer"><Image src={'/photo/logo.jpg'} width={50} height={50}/> Apptechfos</h4>
                 <button><Close width={20} height={20} color={'black'}/></button>
               </div>
               <ul className="pl-0 flex flex-col gap-3.5 mb-0 w-full mt-3">
-                <li onMouseLeave={()=>stop('home')} onMouseEnter={()=>enter('home')} className="w-full hover:bg-gray-100 border-2 border-gray-200 px-2 py-1 gap-1 rounded flex items-center"><Home    playerRef={homeRef}/><Link style={{textDecoration : 'none'}} className="w-full py-2 text-blue-500 font-medium" href="#home">Home</Link></li>
-                <li onMouseLeave={()=>stop('about')} onMouseEnter={()=>enter('about')} className="w-full hover:bg-gray-100 border-2 border-gray-200 px-2 py-1 gap-1 rounded flex items-center"><About   playerRef={aboutRef}/><Link style={{textDecoration : 'none'}} className="w-full py-2 text-black font-medium" href="#about">About</Link></li>
-                <li onMouseLeave={()=>stop('call')} onMouseEnter={()=>enter('call')} className="w-full hover:bg-gray-100 border-2 border-gray-200 px-2 py-1 gap-1 rounded flex items-center"><Call    playerRef={callRef}/><Link style={{textDecoration : 'none'}} className="w-full py-2 text-black font-medium" href="#contact">Contact</Link></li>
-                <li onMouseLeave={()=>stop('account')} onMouseEnter={()=>enter('account')} className="w-full hover:bg-gray-100 border-2 border-gray-200 px-2 py-1 gap-1 rounded flex items-center"><Account playerRef={accountRef}/><Link style={{textDecoration : 'none'}} className="w-full py-2 text-black font-medium" href="#contact">Profile</Link></li>
+                <li onMouseLeave={()=>stop('home')} onMouseEnter={()=>enter('home')} className="w-full hover:bg-gray-100 border-2 border-gray-200 px-2 py-1 gap-1 rounded flex items-center"><Home    playerRef={homeRef}/><Link style={{textDecoration : 'none'}} className="w-full py-2 text-blue-500 font-medium" href="#home">Accueil</Link></li>
+                <li onMouseLeave={()=>stop('about')} onMouseEnter={()=>enter('about')} className="w-full hover:bg-gray-100 border-2 border-gray-200 px-2 py-1 gap-1 rounded flex items-center"><About   playerRef={aboutRef}/><Link style={{textDecoration : 'none'}} className="w-full py-2 text-black font-medium" href="#about">A propos</Link></li>
+                <li onMouseLeave={()=>stop('account')} onMouseEnter={()=>enter('account')} className="w-full hover:bg-gray-100 border-2 border-gray-200 px-2 py-1 gap-1 rounded flex items-center"><Account playerRef={accountRef}/><Link style={{textDecoration : 'none'}} className="w-full py-2 text-black font-medium" href="#contact">Connectez-vous</Link></li>
             </ul>
            </div>
         </Drawer>
