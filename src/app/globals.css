@@ -11,14 +11,14 @@
 body{
   overflow-x: hidden !important;
 }
-body::-webkit-scrollbar{
+body::-webkit-scrollbar,.chat .chatConatainer::-webkit-scrollbar{
   width: 5px;
 }
-body::-webkit-scrollbar-track{
+body::-webkit-scrollbar-track,.chat .chatConatainer::-webkit-scrollbar-track{
   background: #f1f1f1; 
   border-radius: 10px;
 }
-body::-webkit-scrollbar-thumb{
+body::-webkit-scrollbar-thumb,.chat .chatConatainer::-webkit-scrollbar-thumb{
   background: #888; 
   border-radius: 10px;
 }
@@ -81,6 +81,21 @@ header{
    height: 90%;
    object-fit: contain;
 }
+.chat .cheader{
+  z-index: 2;
+  position: sticky;
+  top: 0px;
+  left: 0px;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.chat .chatConatainer{
+  overflow-y: auto;
+}
+.chat .conversation{
+  height: 520px;
+}
+
 @media screen and (max-width:768px) {
   header{
       padding-left: 1rem;
@@ -137,5 +152,12 @@ header{
    .couv .glass:nth-child(2){
     right: -20%;
     bottom: -10%;
+  }
+  .login .lgfirst{
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+  }
+  .about .ao img{
+    width: 100% !important;
   }
 }

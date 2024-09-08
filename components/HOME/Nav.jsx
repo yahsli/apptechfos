@@ -69,6 +69,7 @@ export default function Nav() {
                 <li><Link style={{textDecoration : 'none'}} className="text-blue-500 font-medium" href="#home">Acceuil</Link></li>
                 <li><Link style={{textDecoration : 'none'}} className="text-black font-medium" href="#about">A Propos</Link></li>
                 <li><Link style={{textDecoration : 'none'}} className="text-black font-medium" href="#contact">Contactez nous</Link></li>
+                <li><Link style={{textDecoration : 'none'}} className="text-black font-medium" href="chat">Chat</Link></li>
             </ul>
         </nav>
         <div className="relative hidden md:flex justify-center items-center px-2 bg-slate-200 rounded-full py-2.5 ">
