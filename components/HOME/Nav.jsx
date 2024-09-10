@@ -62,7 +62,7 @@ export default function Nav() {
   }
   return (
     <header className="flex items-center justify-between w-full py-2 z-50 ">
-        <h4 onClick={()=>router.push('/')} className="mb-0 flex items-center font-semibold text-base md:text-lg hover:cursor-pointer"><Image src="/photo/logo.jpg" alt="logo" width={50} height={50}/> Apptechfos</h4>
+        <h4 onClick={()=>router.push('/')} className="mb-0 flex items-center font-semibold text-base md:text-lg hover:cursor-pointer"><Image src="/photo/logo.jpg" alt="logo" width={50} height={50}/> APPTECHFOS</h4>
         <nav className="md:block hidden">
             
             <ul className="pl-0 flex gap-10 mb-0">

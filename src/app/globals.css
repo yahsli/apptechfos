@@ -104,6 +104,9 @@ header{
   height: 250px !important;
   object-fit: cover;
 }
+footer .item{
+   width: calc(75%/4 - 1rem);
+}
 @media screen and (max-width:768px) {
   header{
       padding-left: 1rem;
@@ -128,6 +131,17 @@ header{
   .fcard img{
      height: 50vw !important;
   }
+  footer .item{
+    width: 100% !important;
+  }
+  footer .item *{
+    text-align: start !important;
+    justify-content: start !important;
+ }
+ footer .item div{
+  justify-content: start !important;
+
+ }
 }
 
 @media screen and (min-width:768px) and (max-width : 1024px) {
@@ -146,6 +160,17 @@ header{
  .fcard{
   width: calc(100%/2 - 18px) !important;
  }
+ footer .item{
+    width: calc(50% - 16px);
+ }
+ footer .item *{
+    text-align: start !important;
+    justify-content: start !important;
+ }
+ footer .item div{
+  justify-content: start !important;
+ }
+ 
 }
 @media screen and (max-width : 640px) {
   header{
