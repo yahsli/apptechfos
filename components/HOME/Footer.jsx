@@ -42,7 +42,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="flex gap-3 justify-end mt-3 border-b-2 pb-3 border-gray-500">
-                <div style={{backgroundColor : 'rgba(255,255,255,0.1)'}} className="hover:cursor-pointer pl-2  py-2 rounded-md flex justify-center items-center "><Google width={20} height={20}/></div>
+                <div style={{backgroundColor : 'rgba(255,255,255,0.1)'}} className="hover:cursor-pointer px-2  py-2 rounded-md flex justify-center items-center "><Google width={20} height={20}/></div>
                 <div style={{backgroundColor : 'rgba(255,255,255,0.1)'}} className="hover:cursor-pointer px-2 py-2 rounded-md flex justify-center items-center"><Facebook size={20} color={'white'}/></div>
                 <div style={{backgroundColor : 'rgba(255,255,255,0.1)'}} className="hover:cursor-pointer px-2 py-2 rounded-md flex justify-center items-center"><Instagram size={20} color={'white'}/></div>
             </div>

@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.13.0",
     "@lordicon/element": "^1.10.0",
     "@lordicon/react": "^1.10.0",
+    "@mui/icons-material": "^6.0.2",
     "@mui/material": "^6.0.1",
     "bootstrap": "^5.3.3",
     "geist": "^1.3.1",

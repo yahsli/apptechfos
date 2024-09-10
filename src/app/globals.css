@@ -30,7 +30,7 @@ margin: 0px;
 padding: 0px;
 box-sizing: border-box;  
 }
-header,.first,.second,.third{
+header,.first,.second,.third,.product{
   padding-left: 2rem;
   padding-right: 2rem;
 }
@@ -108,7 +108,7 @@ footer .item{
    width: calc(75%/4 - 1rem);
 }
 @media screen and (max-width:768px) {
-  header{
+  header,.product{
       padding-left: 1rem;
       padding-right: 1rem;
   }
@@ -173,7 +173,7 @@ footer .item{
  
 }
 @media screen and (max-width : 640px) {
-  header{
+  header,.product{
       padding-left: .5rem;
       padding-right: .5rem;
   }
