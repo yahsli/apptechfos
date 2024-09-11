@@ -6,14 +6,14 @@ export default function Footer() {
   const router = useRouter()
   return (
     <footer className="mt-5 rounded-t-3xl bg-gray-800 text-white">
-        <div className="px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 py-5">
+        <div className="px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 py-6">
             <div className="flex gap-3 flex-wrap">
                 <div className="w-full lg:w-3/12 flex flex-col gap-3">
                     <h1 onClick={()=>router.push('/')} className="mb-0 w-fit uppercase flex items-center gap-3 font-semibold text-base md:text-lg hover:cursor-pointer"><Image src="/photo/logo.jpg" alt="logo" width={50} height={50} className="rounded-full"/> Apptechfos</h1>
                     <p className="text-sm mb-0 text-gray-400">APPTECHFOS thème éducatif, construit spécifiquement pour les centres d’éducation qui est dédié à l’enseignement et implique les apprenants.</p>
                 </div>
                 <div className="item flex flex-col gap-2">
-                    <div className="flex">
+                    <div className="flex justify-center">
                         <img src="https://isomorphic-furyroad.s3.amazonaws.com/public/avatars/avatar-14.webp" alt="John Doe" title="John Doe" draggable="false" loading="lazy" width="40" height="40" class="rizzui-avatar-img inline-flex items-center justify-center flex-shrink-0 rounded-full object-cover !h-9 w-9 sm:!h-10 sm:!w-10" style={{width: "40px", height: "40px",backgroundColor: 'rgb(171, 70, 210)'}}/>
                     </div>                
                     <h6 className="capitalize mb-0 font-medium text-center">ACHOUR Brik Maissa</h6>

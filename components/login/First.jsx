@@ -37,7 +37,7 @@ export default function First() {
       }
       <p class="rizzui-text-p font-normal leading-[1.85] text-gray-700 md:leading-loose lg:pe-8 2xl:pe-14">En vous inscrivant, vous aurez accès à du contenu exclusif, à des offres spéciales et serez le premier à être informé des nouvelles et des mises à jour passionnantes</p>    
       <div className="flex gap-4 pb-5 flex-col sm:flex-row">
-         <button tabIndex={0} className="w-full sm:w-1/2 hover:text-blue-500 hover:border-blue-500 rounded border-2 py-2 px-2 text-myGray font-medium text-base flex items-center justify-center gap-1"><Google/> Google</button>
+         <button tabIndex={0} className="w-full sm:w-1/2 hover:text-blue-500 hover:border-blue-500 rounded border-2 py-2 px-2 text-myGray font-medium text-base flex items-center justify-center gap-1"><Google width={'1em'} height={'1em'}/> Google</button>
          <button tabIndex={0} className="w-full sm:w-1/2 hover:text-blue-500 hover:border-blue-500 rounded border-2 py-2 px-2 text-myGray font-medium text-base flex items-center justify-center gap-2"><GitHub width={18} height={18}/> GitHub</button>
       </div>
       <div className="flex gap-3 items-center w-full">
