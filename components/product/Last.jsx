@@ -3,7 +3,7 @@ import Teacher from './Teacher'
 import Rating2 from './Rating'
 import { useState } from 'react'
 
-export default function Last() {
+export default function Last({teacher_email}) {
   const [show,setShow] = useState(false)
   return (
     <div className='mt-5 pt-5 border-t-2'>
@@ -12,7 +12,7 @@ export default function Last() {
             <button className={`bg-blue-100 text-blue-500 rounded px-4 py-2 ${show ? 'border-2 border-blue-500' : 'border-0 border-none'}`} onClick={()=>setShow(true)}>Evaluation</button>
         </div>
         {
-            !show ? <Teacher/> : <Rating2/>
+            !show ? <Teacher teacher_email = {teacher_email}/> : <Rating2/>
         }
     </div>
   )

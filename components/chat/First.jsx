@@ -13,7 +13,7 @@ export default function First() {
     setValue('')
   }
   return (
-    <section className="w-full lg:w-1/2 px-8 flex flex-col justify-between">
+    <section className="w-full lg:w-1/2 px-8 flex flex-col gap-3">
         <div className="chatConatainer border rounded">
             <div className="cheader w-full py-3 rounded-b-3xl rounded-t-md flex justify-between px-3">
                 <h1 className="font-bold text-3xl">Chat</h1>
@@ -54,7 +54,7 @@ export default function First() {
                 )
             }
         </div>
-        <div className="flex gap-3 w-full mt-3">
+        <div className="flex gap-3 w-full">
             <input type="text" name="" id="" className="border rounded px-2.5 py-2 outline-none w-full" placeholder="Enter your message" value={value} onChange={(e)=>setValue(e.target.value)}/>
             <button className="rounded px-4 py-2 bg-gray-900 text-white font-medium" onClick={handleMSG}>Send</button>
         </div>
