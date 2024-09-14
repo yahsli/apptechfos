@@ -1,7 +1,7 @@
 import { Rating } from "@mui/material";
 
 
-export default function Rating2() {
+export default function Rating2({loading}) {
   return (
     <div className='mt-5'>
         <h1 className='mb-0 text-xl sm:text-2xl font-bold'>Toutes les évaluations</h1>

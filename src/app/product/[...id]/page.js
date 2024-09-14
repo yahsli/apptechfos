@@ -5,11 +5,14 @@ import Seconde from "../../../../components/product/Seconde";
 import { GET_ONE_PRODUCT } from "@/app/api/product/product";
 
 export default function index({params}) {
+  const [loading,setLoading] = useState(true)
   const [product,setProduct] = useState({})
   const {id} = params;
   const GET = async () => {
+    setLoading(true)
     const data = await GET_ONE_PRODUCT(id)
     setProduct(data)
+    setLoading(false)
   }
   useEffect(()=>{
     GET()
@@ -19,8 +22,13 @@ export default function index({params}) {
         <First 
             imgSrc={product.img}  
             domain={product.domaine}  
-            category={product.category}/>
-        <Seconde item = {product}/>
+            category={product.category}
+            loading = {loading}
+        />
+        <Seconde 
+            item = {product}
+            loading = {loading}
+        />
     </main>
   )
 }

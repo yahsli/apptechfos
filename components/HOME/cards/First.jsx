@@ -10,7 +10,6 @@ export default function First({item}) {
   }
   return (
      <div className="fcard p-2 border-2 rounded ">
-       
         <img src={item.img} className="rounded-md"/>
          <div className="flex flex-col gap-2.5 mt-3 w-full">
             <small className="bg-green-100 text-green-500 rounded px-2 py-1 w-fit">{item.category}</small>
