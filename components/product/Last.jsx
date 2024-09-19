@@ -3,7 +3,7 @@ import Teacher from './Teacher'
 import Rating2 from './Rating'
 import { useState } from 'react'
 
-export default function Last({teacher_email , loading}) {
+export default function Last({teacher_email , loading ,id}) {
   const [show,setShow] = useState(false)
   return (
     <div className='mt-5 pt-5 border-t-2'>
@@ -13,7 +13,7 @@ export default function Last({teacher_email , loading}) {
             </div>
        
         {
-            !show ? <Teacher teacher_email = {teacher_email} loading = {loading}/> : <Rating2 loading = {loading}/>
+            !show ? <Teacher teacher_email = {teacher_email} loading = {loading}/> : <Rating2 loading = {loading} id={id}/>
         }
     </div>
   )

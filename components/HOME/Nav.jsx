@@ -1,14 +1,16 @@
 'use client'
 import Link from "next/link";
-import { Brain, Close, List } from "../../svg";
-import { useReducer, useRef, useState } from "react";
+import { Brain, Close, List, Person } from "../../svg";
+import { useEffect, useReducer, useRef, useState } from "react";
 import Account from "../icons/Account";
 import { useRouter } from "next/navigation";
-import { Drawer ,Box} from "@mui/material";
+import { Drawer ,Box, Modal} from "@mui/material";
 import About from "../icons/About";
 import Call from "../icons/Call";
 import Home from "../icons/Home";
 import Image from "next/image";
+import { signOut, useSession } from "next-auth/react";
+import Apple from "../loading/Apple";
 function reduce(state,action){
     switch (action.type) {
       case 'open_drawer':
@@ -21,6 +23,7 @@ function reduce(state,action){
 }
 export default function Nav() {
   const router = useRouter()
+  const {data:session,status} = useSession()
   const [transition,setTransition] = useState(0)
   const [state,dispatch] = useReducer(reduce,{
     open:false,
@@ -29,6 +32,7 @@ export default function Nav() {
   const accountRef = useRef(null)
   const callRef = useRef(null)
   const homeRef = useRef(null)
+  const [open,setOpen] = useState(false)
   const enter = (type) => {
     if (type === 'about') {
       aboutRef.current?.playFromBeginning()
@@ -60,6 +64,9 @@ export default function Nav() {
       router.push('/login')
      }
   }
+  useEffect(()=>{
+    router.refresh()
+  },[session])
   return (
     <header className="flex items-center justify-between w-full py-2 z-50 ">
         <h4 onClick={()=>router.push('/')} className="mb-0 flex items-center font-semibold text-base md:text-lg hover:cursor-pointer"><Image src="/photo/logo.jpg" alt="logo" width={50} height={50}/> APPTECHFOS</h4>
@@ -71,15 +78,28 @@ export default function Nav() {
                 <li><Link style={{textDecoration : 'none'}} className="text-black font-medium" href="/chat">Chat</Link></li>
             </ul>
         </nav>
-        <div className="relative hidden md:flex justify-center items-center px-2 bg-slate-200 rounded-full py-2.5 ">
-            <div className="flex relative h-full py-1">
-                <div className="loginRegistre absolute h-full bg-white rounded-full" style={{zIndex : '1',left : transition+'%'}} ></div>
-                <button style={{zIndex : '2'}} className="px-4 w-1/2" onClick={()=>toLoginPage('login')}>Login</button>
-                <button style={{zIndex : '2'}} className="px-4 w-1/2" onClick={()=>toLoginPage('registre')}>Registre</button>
-            </div>
-        </div>
+           {
+            status === 'authenticated' ? (
+              <button className="hidden md:flex gap-2 px-2 py-1 rounded bg-gray-200 items-center" onClick={()=>setOpen(true)}>
+                <Person width={15} height={15} color={'gray'}/>
+                <p className="mb-0 font-medium">{session.user.name}</p>
+              </button>
+             ): status === 'unauthenticated' ? <div className="relative hidden md:flex justify-center items-center px-2 bg-slate-200 rounded-full py-2.5 ">
+                  <div className="flex relative h-full py-1">
+                      <div className="loginRegistre absolute h-full bg-white rounded-full" style={{zIndex : '1',left : transition+'%'}} ></div>
+                      <button style={{zIndex : '2'}} className="px-4 w-1/2" onClick={()=>toLoginPage('login')}>Login</button>
+                      <button style={{zIndex : '2'}} className="px-4 w-1/2" onClick={()=>toLoginPage('registre')}>Registre</button>
+                  </div>
+            </div> : (
+              <div className="hidden md:flex">
+                <Apple size={'20'} color={'black'}/>
+              </div>
+            )
+           }
         <div className="md:hidden flex gap-3">
-            <Account playerRef={accountRef}/>
+            <button onClick={()=>session && setOpen(true)}>
+              <Account playerRef={accountRef}/>
+            </button>
             <button onClick={()=>dispatch({type : 'open_drawer'})}>
               <List width={20} height={20} color={'black'}/>
             </button>
@@ -97,6 +117,15 @@ export default function Nav() {
             </ul>
            </div>
         </Drawer>
+        <Modal open = {open} onClose={()=>setOpen(false)}>
+           <Box className = 'user_modal'>
+               <div>
+                   <h1 className="mb-0 text-2xl font-bold capitalize">Hello {session?.user.name} !</h1>
+                   <p className="text-gray-500 font-medium mb-0 pb-2 border-b-2 text-sm">{session?.user.email}</p>
+                   <button className="bg-red-500 text-white font-medium w-6/12 rounded py-2 px-2 mt-3" onClick={()=>signOut()}>Logout</button>
+               </div>
+           </Box>
+        </Modal>
     </header>
   )
 }

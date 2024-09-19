@@ -29,7 +29,7 @@ export default function Seconde({item,loading}) {
             author = {item.author_name}
             category = {item.category}
             loading = {loading}/>
-         <Last teacher_email = {item.author_email} loading = {loading}/>
+         <Last teacher_email = {item.author_email} loading = {loading} id={item.id_product}/>
     </div>
   )
 }
