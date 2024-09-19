@@ -3,6 +3,7 @@ import { GeistSans } from 'geist/font/sans';
 import "./globals.css";
 import Nav from "../../components/HOME/Nav";
 import Footer from "../../components/HOME/Footer";
+import FirstProvider from "../../components/providers/FirstProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,9 +16,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={GeistSans.className}>
-        <Nav/>
-        {children}
-        <Footer/>
+        <FirstProvider>
+           {children}
+        </FirstProvider>
       </body>
     </html>
   );
