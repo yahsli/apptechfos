@@ -97,9 +97,9 @@ export default function Nav() {
             )
            }
         <div className="md:hidden flex gap-3">
-            <button onClick={()=>session && setOpen(true)}>
+            <div className="hover:cursor-pointer" onClick={()=>session && setOpen(true)}>
               <Account playerRef={accountRef}/>
-            </button>
+            </div>
             <button onClick={()=>dispatch({type : 'open_drawer'})}>
               <List width={20} height={20} color={'black'}/>
             </button>

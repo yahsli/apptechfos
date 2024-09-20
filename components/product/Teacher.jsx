@@ -11,7 +11,6 @@ export default function Teacher({teacher_email,loading}) {
     try {
       const response = await GET_TEACHER(teacher_email)
       setTeacher(response)
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
