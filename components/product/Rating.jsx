@@ -20,8 +20,8 @@ export default function Rating2({loading,id}) {
   const {data,mutate : add_rating ,isPending } = useMutation({
     mutationFn : ADD_RATING,
     onSuccess : (res) => {
-        handleTitle(res.message)
-        handleMessage("You add a rating for this product")
+        handleTitle("Evaluation est ajouté correctement")
+        handleMessage("vous avez ajouté une évaluation pour ce produit")
         handleType(true)
         showAlert()
         setTimeout(() => {
@@ -30,8 +30,8 @@ export default function Rating2({loading,id}) {
         getRating()
     },
     onError : (error) => {
-        handleTitle('Add rating failed')
-        handleMessage(error.message)
+        handleTitle('Opération échoué')
+        handleMessage("l'opération ajouter une évaluation est échoué")
         handleType(true)
         showAlert()
         setTimeout(() => {
@@ -49,8 +49,8 @@ export default function Rating2({loading,id}) {
   }
   const addRating = () => {
     if(evaluation === '' || evaluation === '0'){
-        handleTitle('Please select a rating')
-        handleMessage('From select option you must select one of them to add rating')
+        handleTitle("S'il vous plait séléctionnez une évaluation")
+        handleMessage('à partir select option vous pouvez séléctionnez une évaluation')
         handleType(false)
         showAlert()
         setTimeout(() => {

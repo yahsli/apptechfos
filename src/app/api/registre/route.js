@@ -10,9 +10,9 @@ export default async function CREATE_ACCOUNT(values) {
             values (${values.email}, ${values.firstname}, ${values.lastname}, ${hash_password})
         `;
 
-        return {status: 200, title: 'Account created successfully',message : 'You can now connect to your account in login page'};
+        return {status: 200, title: 'Votre compte est créé',message : 'vous pouvez connecter maintnant à votre compte dans la page login'};
     } catch (error) {
         console.error('Error adding user:', error); 
-        throw new Error('This account is already exist');
+        throw new Error('le compte est déja existé');
     }
 }

@@ -7,7 +7,6 @@ export default function Head({id,name,price,sous_category,new_price,old_price,lo
     const [moy,setMoy] = useState('')
     const getRating = async () => {
         const res = await GET_RATING(id);
-        console.log(res);
         const avg = Number(res.moy?.avg);  
         setMoy(avg);
       };

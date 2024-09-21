@@ -42,7 +42,7 @@ export default function Registre() {
           showAlert()
           handleType(false)
           handleMessage(error.message)
-          handleTitle('Operation failed')
+          handleTitle('Opération échoué')
           setTimeout(() => {
             hideAlert()
           }, 4000);
