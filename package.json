@@ -24,6 +24,7 @@
     "lottie-web": "^5.12.2",
     "next": "14.2.7",
     "next-auth": "^4.24.7",
+    "nodemailer": "^6.9.15",
     "react": "^18",
     "react-dom": "^18",
     "react-simple-typewriter": "^5.0.1",

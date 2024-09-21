@@ -1,39 +1,90 @@
 'use client'
-import { ADD_RATING } from "@/app/api/product/product";
+import { ADD_RATING, CHECK, GET_RATING } from "@/app/api/product/product";
 import { Rating } from "@mui/material";
 import { useMutation } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import Alert from "../Alert";
+import { alertContext } from "../providers/FirstProvider";
 
 
 export default function Rating2({loading,id}) {
+  const {alert,showAlert,hideAlert,handleType,handleMessage,handleTitle} = useContext(alertContext)
   const [evaluation,setEvaluation] = useState('')
+  const [access,setAccess] = useState(false)
+  const [stat,setStat] = useState({
+    count : 0,
+    moy : 0,
+  })
   const {data:session,status} = useSession()
   const {data,mutate : add_rating ,isPending } = useMutation({
     mutationFn : ADD_RATING,
-    onSuccess : () => {
-        console.log('rating added')
+    onSuccess : (res) => {
+        handleTitle(res.message)
+        handleMessage("You add a rating for this product")
+        handleType(true)
+        showAlert()
+        setTimeout(() => {
+            hideAlert()
+        }, 4000);
+        getRating()
     },
     onError : (error) => {
-        console.log(error)
+        handleTitle('Add rating failed')
+        handleMessage(error.message)
+        handleType(true)
+        showAlert()
+        setTimeout(() => {
+            hideAlert()
+        }, 4000);
     }
   })
-  const addRating = () => {
-    if(session && session.user && session.user.email){
-        console.log(session.user.email);
-        add_rating(Number(evaluation), session.user.email, id);
-    } else {
-        console.log("Email is missing");
-    }
+  const check = async () => {
+     const res = await CHECK(session?.user.email,id)
+     if(res.message){
+        setAccess(false)
+     }else{
+        setAccess(true)
+     }
   }
+  const addRating = () => {
+    if(evaluation === '' || evaluation === '0'){
+        handleTitle('Please select a rating')
+        handleMessage('From select option you must select one of them to add rating')
+        handleType(false)
+        showAlert()
+        setTimeout(() => {
+            hideAlert()
+        }, 4000);
+    
+  }else{
+    add_rating({evaluation :Number(evaluation),email:session.user.email, id});
+    setAccess(false)
+  }
+  }
+  const getRating = async () => {
+    const res = await GET_RATING(id);
+    const avg = Number(res.moy?.avg || 0);  
+    setStat(prev => ({
+      ...prev,
+      count: res.count?.count || 0,   
+      moy: avg.toFixed(1),           
+    }));
+  };
+  
+  useEffect(()=>{
+    check()
+    getRating()
+  },[])
   return (
     <div className='mt-5'>
+        {alert.show && <Alert title={alert.title} para={alert.message} type={alert.type}/>}
         <h1 className='mb-0 text-xl sm:text-2xl font-bold'>Toutes les évaluations</h1>
         <div className="flex mt-3 flex-col sm:flex-row gap-2">
             <div className="flex flex-col items-center justify-center w-full sm:w-4/12">
-                <h1 className='mb-0 text-5xl font-bold'>4.5</h1>
+                <h1 className='mb-0 text-5xl font-bold'>{stat.moy}</h1>
                 <Rating value={4} readOnly size="small"/>
-                <p className="text-gray-500 mb-0 text-sm">Basé sur 153 (évaluations)</p>
+                <p className="text-gray-500 mb-0 text-sm">Basé sur {stat.count} (évaluations)</p>
             </div>
             <div className="w-full sm:w-8/12 flex flex-col gap-3">
                 <div className="w-full flex gap-5 items-center">
@@ -68,6 +119,7 @@ export default function Rating2({loading,id}) {
                 </div>
             </div>
         </div>
+    
         <div className="flex items-center mt-3 gap-3 flex-wrap">
             <p className="font-medium text-xl mb-0">Ajouter une évaluation : </p>
             <select value={evaluation} onChange={(e)=>setEvaluation(e.target.value)} name="" id="" className="px-4 py-2 rounded border-2 hover:border-blue-500 outline-none hover:cursor-pointer">
@@ -78,7 +130,12 @@ export default function Rating2({loading,id}) {
                 <option value="2">2 étoiles</option>
                 <option value="1">1 étoiles</option>
             </select>
-            <button onClick={()=>addRating()} className="px-4 py-2 bg-blue-500 rounded text-white font-medium">Add Evaluation</button>
+            {
+                (session && access) ?  <button onClick={()=>addRating()} className="px-4 py-2 bg-blue-500 rounded text-white font-medium">Add Evaluation</button> : (
+                    <button className="px-4 py-2 bg-blue-300 rounded text-white font-medium hover:cursor-not-allowed" title="Connect to your account first">Add Evaluation</button>
+                )
+
+            }
         </div>
     </div>
   )

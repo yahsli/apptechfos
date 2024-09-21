@@ -24,7 +24,6 @@ const handler = NextAuth({
             if (!isValidPassword) {
                 throw new Error('Invalid password');
             }
-            console.log(user);
             return user;
         } catch (error) {
             console.log(error);

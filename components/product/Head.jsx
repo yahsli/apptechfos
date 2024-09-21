@@ -1,16 +1,28 @@
+'use client'
 import { Rating } from "@mui/material";
-import Link from "next/link";
 import Apple from "../loading/Apple";
-export default function Head({name,price,sous_category,new_price,old_price,loading}) {
+import { GET_RATING } from "@/app/api/product/product";
+import { useEffect, useState } from "react";
+export default function Head({id,name,price,sous_category,new_price,old_price,loading}) {
+    const [moy,setMoy] = useState('')
+    const getRating = async () => {
+        const res = await GET_RATING(id);
+        console.log(res);
+        const avg = Number(res.moy?.avg);  
+        setMoy(avg);
+      };
+    useEffect(()=>{
+        getRating()
+    },[id])
   return (
         !loading ? (
             <div>
                 <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-3">{name}</h1>
                 <small className="p-2 rounded bg-green-200 text-green-500">{sous_category}</small>
                 <div className="flex gap-4 items-center mt-5">
-                    <h1 className="mb-0 font-bold text-4xl">4.5</h1>
+                    <h1 className="mb-0 font-bold text-4xl">{moy}</h1>
                     <div  className="flex flex-col">
-                        <Rating value={4} readOnly size="small"/>
+                        <Rating name="half-rating-read" value={moy} readOnly size="small"/>
                         <small className="text-gray-500">Avis de nos acheteurs</small>
                     </div>
         

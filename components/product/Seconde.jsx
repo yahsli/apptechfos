@@ -11,6 +11,7 @@ export default function Seconde({item,loading}) {
   return (
     <div className="w-full lg:w-8/12 pt-10">
          <Head 
+            id={item.id_product}
             name = {item.name} 
             new_price = {item.new_price} 
             old_price = {item.old_price} 
@@ -22,6 +23,7 @@ export default function Seconde({item,loading}) {
             big_desc = {item.big_desc}
             loading = {loading}/>
          <Detail
+            id={item.id_product}
             date = {item.date}
             n_page = {item.n_page}
             n_cours = {item.n_cours}

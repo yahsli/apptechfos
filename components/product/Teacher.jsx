@@ -7,7 +7,6 @@ export default function Teacher({teacher_email,loading}) {
   const [teacher,setTeacher] = useState({})
   
   const handleTeacher = async ()=>{
-    console.log(teacher_email);
     try {
       const response = await GET_TEACHER(teacher_email)
       setTeacher(response)
