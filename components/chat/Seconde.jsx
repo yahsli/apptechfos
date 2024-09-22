@@ -7,12 +7,12 @@ export default function Seconde() {
   return (
     <section className="hidden lg:flex flex-col w-1/2 overflow-y-hidden">
           <div>
-            <h1 className="font-bold mb-0 text-6xl">About<Typewriter words={[' Chatbot']} loop={0} cursor/></h1>
+            <h1 className="font-bold mb-0 text-6xl">Notre<Typewriter words={[' Chatbot']} loop={0} cursor/></h1>
             <p className="mb-0 mt-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit placeat debitis voluptates tempora minima rem temporibus laudantium. Vitae, aliquam fugiat iusto excepturi repellendus necessitatibus molestiae ipsa maxime itaque, iure ipsam.</p>
           </div>
           <div className="mt-3 flex justify-between">
             <div style={{flexShrink : '2'}}>
-                <h2 className="font-bold">Features</h2>
+                <h2 className="font-bold">Caractréstiques</h2>
                 <ul className="pl-0 flex flex-col gap-2 text-xs xl:text-sm">
                     <li className="flex items-start gap-2"><CloudeCheck width={20} height={20} color={'black'}/> <span className="font-medium">High Accuracy</span>: 98% response precision</li>
                     <li className="flex items-start gap-2"><CloudeCheck width={20} height={20} color={'black'}/> <span className="font-medium">Efficiency</span>: Real-time processing with minimal delays</li>

@@ -21,7 +21,7 @@ export default function Index() {
   if (status === 'loading') {
     return (
       <div className="h-[700px] flex items-center justify-center">
-        <h1>Loading <Apple size={25} color={'black'} /></h1>
+        <h1 className="text-bold">Loading... <Apple size={25} color={'black'} /></h1>
       </div>
     );
   }
@@ -29,8 +29,8 @@ export default function Index() {
   if (session) {
     return (
       <div className="h-[700px] flex items-center justify-center">
-        <h1>Loading <Apple size={25} color={'black'} /></h1>
-      </div>
+        <h1 className="text-bold">Loading... <Apple size={25} color={'black'} /></h1>
+        </div>
     );
   }
 

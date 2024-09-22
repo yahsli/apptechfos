@@ -27,7 +27,7 @@ export default function First() {
             </div>
            { 
                 messages.length === 0 ? <div className="conversation px-3 flex items-center justify-center gap-3">
-                    <small className="text-red-500">Empty discussion</small>
+                    <small className="text-red-500">Discussion vide</small>
                 </div> : (
                     <div className="conversation px-3 flex flex-col gap-3">
                         {

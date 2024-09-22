@@ -10,7 +10,7 @@ export default function Footer() {
             <div className="flex gap-3 flex-wrap">
                 <div className="w-full lg:w-3/12 flex flex-col gap-3">
                     <h1 onClick={()=>router.push('/')} className="mb-0 w-fit uppercase flex items-center gap-3 font-semibold text-base md:text-lg hover:cursor-pointer"><Image src="/photo/logo.jpg" alt="logo" width={50} height={50} className="rounded-full"/> Apptechfos</h1>
-                    <p className="text-sm mb-0 text-gray-400">APPTECHFOS thème éducatif, construit spécifiquement pour les centres d’éducation qui est dédié à l’enseignement et implique les apprenants.</p>
+                    <p className="text-sm mb-0 text-gray-400">APPTECHFOS est une plateforme d'idée à l'enseignement du <b>FOS</b> (Français sur objectif spécifique)</p>
                 </div>
                 <div className="item flex flex-col gap-2">
                     <div className="flex justify-center">

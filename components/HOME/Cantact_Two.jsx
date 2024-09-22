@@ -84,7 +84,7 @@ export default function Cantact_Two() {
                 name="message" 
                 id=""  
                 className="border rounded-md h-[90px] px-3 py-2" 
-                placeholder="Entrez le message que vaille l'envoyer "
+                placeholder="Entrez le message que veuillez l'envoyer "
                 value={values.message}
                 onChange={handleValues}/>
         </div>
