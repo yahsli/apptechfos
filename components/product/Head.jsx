@@ -7,7 +7,7 @@ import { countries } from "./pays";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-export default function Head({id,name,price,sous_category,new_price,old_price,loading}) {
+export default function Head({id,name,price,sous_category,new_price,old_price,loading,img}) {
     const router = useRouter()
     const [moy,setMoy] = useState('')
     const [open,setOpen] = useState(false)
@@ -59,7 +59,7 @@ export default function Head({id,name,price,sous_category,new_price,old_price,lo
                 </div>
                 <div className="flex gap-3 flex-col sm:flex-row">
                     <button onClick ={handleOpen} className="font-medium text-white rounded px-4 py-2 bg-blue-500 mt-3 text-center w-full sm:w-4/12 md:w-2/12">Payer</button>
-                    <a href={'/photo/datamining.pdf'} download={'datamining.pdf'} className="font-medium text-white rounded px-4 py-2 bg-gray-500 mt-3 text-center w-full sm:w-4/12 md:w-2/12">Voir le cours</a>
+                    <a href={'/pdf/datamining.pdf'} download={'datamining.pdf'} className="font-medium text-white rounded px-4 py-2 bg-gray-500 mt-3 text-center w-full sm:w-4/12 md:w-2/12">Voir le cours</a>
                 </div>
                 <Modal open = {open} onClose={()=>setOpen(false)}>
                     <Box className = 'payment_modal'>
@@ -110,7 +110,7 @@ export default function Head({id,name,price,sous_category,new_price,old_price,lo
                                     <h3 className="mb-0 font-bold">Détails de la commande</h3>
                                     <div className="mt-3 flex gap-3">
                                         <div>
-                                            <Image src="/photo/formation.jpg" alt="commande" width={100} height={100} className="rounded object-cover"/>
+                                            <Image src={img} alt="commande" width={100} height={100} className="rounded object-cover"/>
                                         </div>
                                         <h5 className="mb-0 text-sm sm:text-base font-bold">{name}</h5>
                                         <span className="font-medium text-blue-500">{new_price}</span>
@@ -136,9 +136,9 @@ export default function Head({id,name,price,sous_category,new_price,old_price,lo
                     <div className="py-4 w-4/12 bg-gray-200 animate-pulse rounded mt-3"></div>
                     <div className="py-4 w-2/12 bg-gray-200 animate-pulse rounded mt-3"></div>
                 </div>
-                <div className="flex gap-3 flex-col sm:flex-row">
-                    <button className="font-medium text-white rounded px-4 py-2 bg-blue-500 mt-3 text-center w-full sm:w-4/12 md:w-2/12 flex items-center justify-center"><Apple size={20} color={'white'}/></button>
-                    <button className="font-medium text-white rounded px-4 py-2 bg-gray-500 mt-3 text-center w-full sm:w-4/12 md:w-2/12 flex items-center justify-center"><Apple size={20} color={'white'}/></button>
+                <div className="flex gap-3 flex-col sm:flex-row mt-3" >
+                    <div className="w-2/12 bg-gray-200 animate-pulse py-4 rounded-md"></div>
+                    <div className="w-2/12 bg-gray-200 animate-pulse py-4 rounded-md"></div>
                 </div>
             </div>
         )

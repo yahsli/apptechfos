@@ -9,6 +9,7 @@ import { alertContext } from "../providers/FirstProvider";
 
 
 export default function Rating2({loading,id}) {
+  const [pending,setPending] = useState(true)
   const {alert,showAlert,hideAlert,handleType,handleMessage,handleTitle} = useContext(alertContext)
   const [evaluation,setEvaluation] = useState('')
   const [access,setAccess] = useState(false)
@@ -63,6 +64,7 @@ export default function Rating2({loading,id}) {
   }
   }
   const getRating = async () => {
+    setPending(true)
     const res = await GET_RATING(id);
     const avg = Number(res.moy?.avg || 0);  
     setStat(prev => ({
@@ -70,6 +72,7 @@ export default function Rating2({loading,id}) {
       count: res.count?.count || 0,   
       moy: avg.toFixed(1),           
     }));
+    setPending(false)
   };
   
   useEffect(()=>{
@@ -82,7 +85,7 @@ export default function Rating2({loading,id}) {
         <h1 className='mb-0 text-xl sm:text-2xl font-bold'>Toutes les évaluations</h1>
         <div className="flex mt-3 flex-col sm:flex-row gap-2">
             <div className="flex flex-col items-center justify-center w-full sm:w-4/12">
-                <h1 className='mb-0 text-5xl font-bold'>{stat.moy}</h1>
+                {!pending ? <h1 className='mb-0 text-5xl font-bold'>{stat.moy}</h1> : <div className="py-3 px-3 w-4/12 bg-gray-200 animate-pulse rounded"></div>}
                 <Rating value={4} readOnly size="small"/>
                 <p className="text-gray-500 mb-0 text-sm">Basé sur {stat.count} (évaluations)</p>
             </div>

@@ -12,7 +12,8 @@ export default function Seconde({item,loading}) {
     <div className="w-full lg:w-8/12 pt-10">
          <Head 
             id={item.id_product}
-            name = {item.name} 
+            name = {item.name}
+            img = {item.img} 
             new_price = {item.new_price} 
             old_price = {item.old_price} 
             sous_category={item.sous_category}
