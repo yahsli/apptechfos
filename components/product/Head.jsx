@@ -5,9 +5,13 @@ import { GET_RATING } from "@/app/api/product/product";
 import { useEffect, useState } from "react";
 import { countries } from "./pays";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 export default function Head({id,name,price,sous_category,new_price,old_price,loading}) {
+    const router = useRouter()
     const [moy,setMoy] = useState('')
     const [open,setOpen] = useState(false)
+    const {data:session,status} = useSession()
     const [paymentMethods,setPaymentMethods] = useState({
         one : false,
         two : false,
@@ -23,6 +27,13 @@ export default function Head({id,name,price,sous_category,new_price,old_price,lo
             ...prev,
             one : !prev.one
         }))
+    }
+    const handleOpen = () => {
+        if(session){
+            setOpen(true)
+        }else{
+            router.push('/login')
+        }
     }
     useEffect(()=>{
         getRating()
@@ -47,7 +58,7 @@ export default function Head({id,name,price,sous_category,new_price,old_price,lo
                     <p style={{color : '#11843C'}} className="font-medium mb-0 text-sm">Toutes taxes comprises</p>
                 </div>
                 <div className="flex gap-3 flex-col sm:flex-row">
-                    <button onClick ={()=>setOpen(true)} className="font-medium text-white rounded px-4 py-2 bg-blue-500 mt-3 text-center w-full sm:w-4/12 md:w-2/12">Payer</button>
+                    <button onClick ={handleOpen} className="font-medium text-white rounded px-4 py-2 bg-blue-500 mt-3 text-center w-full sm:w-4/12 md:w-2/12">Payer</button>
                     <a href={'/photo/datamining.pdf'} download={'datamining.pdf'} className="font-medium text-white rounded px-4 py-2 bg-gray-500 mt-3 text-center w-full sm:w-4/12 md:w-2/12">Voir le cours</a>
                 </div>
                 <Modal open = {open} onClose={()=>setOpen(false)}>
@@ -74,7 +85,7 @@ export default function Head({id,name,price,sous_category,new_price,old_price,lo
                                     <p className="mb-0 text-sm sm:text-base font-medium text-gray-900">Mode de payment</p>
                                     <p className="mb-0 text-sm sm:text-base font-medium text-gray-900">Connexion sécurisée</p>
                                 </div>
-                                <div onClick={handleOne} className={`mb-0 py-2 px-2 bg-gray-100 flex gap-4 mt-3 hover:cursor-pointer ${paymentMethods.one ? 'rounded-t':'rounded'}`}>
+                                <div onClick={handleOne} className={`mb-0 py-2 px-2 bg-gray-100 flex gap-4 mt-5 hover:cursor-pointer ${paymentMethods.one ? 'rounded-t':'rounded'}`}>
                                     <input type="radio" name="" id="" checked = {paymentMethods.one}/>
                                     <h5 className="mb-0 font-medium">Payment Externe</h5>
                                 </div>
@@ -87,7 +98,7 @@ export default function Head({id,name,price,sous_category,new_price,old_price,lo
                                             </div>
                                     )
                                 }
-                                <div className="mb-0 py-2 px-2 bg-gray-100 rounded flex gap-4 mt-5 hover:cursor-not-allowed" title="ce type de payment n'est pas effectué pour le moment">
+                                <div className="mb-0 py-2 px-2 bg-gray-100 rounded flex gap-4 mt-3 hover:cursor-not-allowed" title="ce type de payment n'est pas effectué pour le moment">
                                     <input type="radio" name="" id="" />
                                     <h5 className="mb-0 font-medium text-gray-500">Carte Edahabiya/CIB</h5>
                                 </div>
