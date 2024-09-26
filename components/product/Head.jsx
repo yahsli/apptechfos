@@ -7,10 +7,11 @@ import { countries } from "./pays";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-export default function Head({id,name,price,sous_category,new_price,old_price,loading,img}) {
+export default function Head({id,name,price,sous_category,new_price,old_price,loading,img,vd}) {
     const router = useRouter()
     const [moy,setMoy] = useState('')
     const [open,setOpen] = useState(false)
+    const [openVideo,setOpenVideo] = useState(false)
     const {data:session,status} = useSession()
     const [paymentMethods,setPaymentMethods] = useState({
         one : false,
@@ -60,6 +61,7 @@ export default function Head({id,name,price,sous_category,new_price,old_price,lo
                 <div className="flex gap-3 flex-col sm:flex-row">
                     <button onClick ={handleOpen} className="font-medium text-white rounded px-4 py-2 bg-blue-500 mt-3 text-center w-full sm:w-4/12 md:w-2/12">Payer</button>
                     <a href={'/pdf/datamining.pdf'} download={'datamining.pdf'} className="font-medium text-white rounded px-4 py-2 bg-gray-500 mt-3 text-center w-full sm:w-4/12 md:w-2/12">Voir le cours</a>
+                    <button onClick ={()=>setOpenVideo(true)} className="font-medium text-white rounded px-4 py-2 bg-blue-500 mt-3 text-center w-full sm:w-4/12 md:w-2/12">Vidéo</button>
                 </div>
                 <Modal open = {open} onClose={()=>setOpen(false)}>
                     <Box className = 'payment_modal'>
@@ -125,6 +127,13 @@ export default function Head({id,name,price,sous_category,new_price,old_price,lo
                             </div>
                         </div>
                     </Box>
+                </Modal>
+                <Modal open = {openVideo} onClose={()=>setOpenVideo(false)}>
+                     <Box className = 'video_modal'>
+                         <video autoPlay controls className="rounded">
+                            <source src={vd}/>
+                         </video>
+                     </Box>
                 </Modal>
             </div>
         ) : (

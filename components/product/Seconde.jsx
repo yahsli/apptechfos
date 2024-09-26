@@ -14,6 +14,7 @@ export default function Seconde({item,loading}) {
             id={item.id_product}
             name = {item.name}
             img = {item.img} 
+            vd = {item.vd}
             new_price = {item.new_price} 
             old_price = {item.old_price} 
             sous_category={item.sous_category}

@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"
 import { Error } from "../../svg"
 export default function Login() {
   const router = useRouter()
+  const [loading,setLoading] = useState(false)
   const [error,setError] = useState(null)
   const [values,setValues] = useState({
     email : '',
@@ -13,6 +14,7 @@ export default function Login() {
   })
   const login = async(e) => {
     e.preventDefault()
+    setLoading(true)
     const response = await signIn('credentials',{
       redirect : false,
       email : values.email,
@@ -27,6 +29,7 @@ export default function Login() {
       setError(null)
       router.push('/')
     }
+    setLoading(false)
     
   }
   const handleValues = (e) => {
@@ -49,8 +52,11 @@ export default function Login() {
               Connecter
             </div>
           ) : (
-
-            <button type="submit" className="bg-blue-500 font-medium rounded w-full mt-4 text-white px-2 py-2">Connecter</button>
+             loading ? (
+              <div  className="bg-blue-500 font-medium rounded w-full mt-4 text-white px-2 py-2 hover:cursor-wait text-center">Loading...</div>
+             ) : (
+              <button type="submit" className="bg-blue-500 font-medium rounded w-full mt-4 text-white px-2 py-2">Connecter</button>
+             )
           )
         }
       </form>

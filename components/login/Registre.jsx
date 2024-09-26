@@ -73,7 +73,7 @@ export default function Registre() {
             <div className="w-full">
                 <label className="mb-1.5 text-sm font-medium" htmlFor="password">Mot de passe*</label>
                 <input type="Password" id="password" name="password" className={`rounded border-2 px-3 py-2.5 outline-none w-full ${values.password.length !== 0 && (!validPassword(values.password) ? 'border-red-500' : 'border-green-500')}`} placeholder="Entrez votre mot de passe" value={values.password} onChange={(e)=>handleValues(e)}/>
-                <small className={`${values.password === '' ? 'text-black' : !validPassword(values.password) ? 'text-red-500' : 'text-green-500'}`}>Majuscule | Minuscule | Chiffre</small>
+                <small className={`${values.password === '' ? 'text-gray-500' : !validPassword(values.password) ? 'text-red-500' : 'text-green-500'}`}>Majuscule | Minuscule | Chiffre</small>
 
             </div>
             <div className="w-full">
